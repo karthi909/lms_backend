@@ -7,9 +7,9 @@ const questionSchema = new mongoose.Schema({
 
     question_title:{type:String, required: true},
 
-    question_disc:{ type:String},
+    question_desc:{ type:String},
 
-    question_url:{  type:String },
+    question_img:{  type:String },
 
     question_points:{ type: Number, required: true},
 
