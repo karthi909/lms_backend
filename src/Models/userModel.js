@@ -15,14 +15,16 @@ const userSchema = new mongoose.Schema({
 
     linkedIN_url:{ type:String, required: true},
 
-    test_atempted:{type: ObjectId, ref: "levels"},
+    image:{type: String},
 
-    perfoemance:[
-        {   
-            level_id:{type: ObjectId, ref:"levels"},
-            score:{ type:Number}
-        }
-    ],
+    // test_atempted:{type: ObjectId, ref: "levels"},
+
+    // perfoemance:[
+    //     {   
+    //         level_id:{type: ObjectId, ref:"levels"},
+    //         score:{ type:Number}
+    //     }
+    // ],
     
     isDisabled:{type:Boolean, default: false },
 

@@ -15,7 +15,7 @@ const questionSchema = new mongoose.Schema({
 
     isDeleted:{ type: Boolean, default: false},
 
-    isDeletedAt:{ type: Date},
+    isDeletedAt:{ type: Date, default: null},
 
     options:{
             "1":{type: String},// required: true, unique: true},

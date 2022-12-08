@@ -5,7 +5,13 @@ const optionSchema = new mongoose.Schema({
    
     question_id:{ type: ObjectId, ref:"questions", required: true},
 
-    answer:{type: Number, required: true}
+    answer:{type: Number, required: true},
+
+    isDeleted:{ type:Boolean, default: false},
+
+    isDeletedAt:{ type: Date, default: null},
+
+    //isDeletedBy_id:{type:ObjectId, ref:""}
 
      
 

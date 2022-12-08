@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const resultModel= mongoose.Schema({
+const resultSchema = mongoose.Schema({
     user_id:{type:ObjectId, ref:"users", required:true},
 
     level_id:{type:ObjectId, ref:"levels", required: true},
@@ -12,4 +12,8 @@ const resultModel= mongoose.Schema({
 
     modifiedBy_id:{type:ObjectId, ref:""},
 
-})
+},{timestamps: true});
+
+module.exports = mongoose.model('resultd', resultSchema)
+
+
