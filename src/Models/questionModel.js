@@ -18,10 +18,10 @@ const questionSchema = new mongoose.Schema({
     isDeletedAt:{ type: Date},
 
     options:{
-            1:{type: String},// required: true, unique: true},
-            2:{type: String},// required: true, unique: true},
-            3:{type: String},//, required: true, unique: true},
-            4:{type: String}, //, required: true, unique: true}
+            "1":{type: String},// required: true, unique: true},
+            "2":{type: String},// required: true, unique: true},
+            "3":{type: String},//, required: true, unique: true},
+            "4":{type: String}, //, required: true, unique: true}
         }
 
 

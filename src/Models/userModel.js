@@ -26,8 +26,8 @@ const userSchema = new mongoose.Schema({
     
     isDisabled:{type:Boolean, default: false },
 
-    isDisabledAt:{type: Date}
+    isDisabledAt:{type: Date, default: null}
 
 },{timestamps: true});
 
-module.exports = mongoose.model('users', userSchema)
+module.exports = mongoose.model('users', userSchema);

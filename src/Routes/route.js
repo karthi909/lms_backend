@@ -13,6 +13,8 @@ router.post('/api/level', levelControler.createLevel);
 
 router.post('/api/qn', qnControler.createQn);
 
+router.post("/api/qn/ans", qnControler.createQnWithAns);
+
 //router.post('/api/opt', optControler);
 router.post('/api/opt', optControler.copt)
 
