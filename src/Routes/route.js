@@ -40,4 +40,7 @@ router.get('/api/levl_qn/:level_id', qnControler.getQns_by_levelID)
 router.get("/api/lvl/:level_id", qnControler.getlevel_qns_limit)
 
 
+router.get("/api/qn/ans", optControler.check);
+
+
 module.exports = router

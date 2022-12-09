@@ -1,4 +1,6 @@
-const optModel = require('../Models/optionModel')
+const optModel = require('../Models/optionModel');
+
+const qnModel = require('../Models/questionModel');
 
 
 let copt = async (req, res)=>{
@@ -23,15 +25,32 @@ let check = async (req, res)=>{
 
         let {qn_id, ans } = data;
 
-        let ansData = await optModel.find({question_id: qn_id})
+        let ansData = await optModel.findOne({question_id:data.qn_id});
 
-        
+        console.log(data.ans)
+        console.log(ansData.answer)
 
+        let qnData = await qnModel.findById({_id: data.qn_id})
 
+        console.log(qnData)
+        console.log(ansData)
+
+        if(data.ans == ansData.answer){
+            res.send({status: true, reward_points: qnData.question_points})
+        } else {
+            //console.log("not matched the ans")
+            res.send({status: false, reward_points:0});
+        }
+
+       
+
+        //res.send({data:"done"})
+            
 
     } catch(err){
         console.log(err)
+        res.send({error: err})
     }
 }
 
-module.exports = {copt}
+module.exports = {copt, check}
