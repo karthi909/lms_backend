@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId
 
-const optionSchema = new mongoose.Schema({
+const answerSchema = new mongoose.Schema({
    
     question_id:{ type: ObjectId, ref:"questions", required: true},
 
@@ -17,4 +17,4 @@ const optionSchema = new mongoose.Schema({
 
 },{timestamps: true});
 
-module.exports = mongoose.model('options', optionSchema)
+module.exports = mongoose.model('answer', answerSchema)

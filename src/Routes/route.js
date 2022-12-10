@@ -3,7 +3,7 @@ const router = express.Router();
 
 const levelControler = require("../Controlers/levleController")
 const qnControler = require("../Controlers/questionControler")
-const optControler = require('../Controlers/optionControler')
+const ansControler = require('../Controlers/answerControler')
 const userController = require('../Controlers/userControler')
 
 
@@ -24,7 +24,7 @@ router.post("/api/insert_question", qnControler.createQnWithAns);
 //router.post('/api/opt', optControler);
 
 //rotue to create the option
-router.post('/api/opt', optControler.copt)
+router.post('/api/opt', ansControler.copt)
 
 //rotue to get all questions from the database
 router.get('/api/get_qns', qnControler.getQns)
@@ -40,7 +40,11 @@ router.get('/api/levl_qn/:level_id', qnControler.getQns_by_levelID)
 router.get("/api/lvl/:level_id", qnControler.getlevel_qns_limit)
 
 
-router.get("/api/qn/ans", optControler.check);
+router.get("/api/qn/ans", ansControler.check);
+
+
+//router to check multi qn ans
+router.post("/api/qn/ans-check", ansControler.multiCheck)
 
 
 module.exports = router

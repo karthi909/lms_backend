@@ -1,6 +1,6 @@
 const questionModel = require('../Models/questionModel');
 //const ansModel = require('../Models/optionModel');
-const optionModel = require('../Models/optionModel');
+const ansModel = require('../Models/answerModel');
 
 
 const createQn = async (req, res)=>{
@@ -38,7 +38,7 @@ const createQnWithAns = async (req, res) =>{
 
         //console.log(qData);
 
-        let aData = await optionModel.create({
+        let aData = await ansModel.create({
             question_id: qData._id,
             answer: data.answer
         });
