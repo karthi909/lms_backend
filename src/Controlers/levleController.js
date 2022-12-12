@@ -7,7 +7,7 @@ const createLevel = async (req, res)=>{
     let {level_num, level_disc} = data;
 
     let nData = await levelModel.create(data);
-        console.log(nData)
+        //console.log(nData)
     return res.send({data: nData})
 
     } catch(err){

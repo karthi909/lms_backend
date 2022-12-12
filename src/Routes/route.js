@@ -19,12 +19,12 @@ router.post('/api/level', levelControler.createLevel);
 router.post('/api/qn', qnControler.createQn);
 
 //route to create with qn and ans, means we wil give both qn with answer but will create seperartly in its own models.
-router.post("/api/insert_question", qnControler.createQnWithAns);
+router.post("/api/qn_ans", qnControler.createQnWithAns);
 
 //router.post('/api/opt', optControler);
 
-//rotue to create the option
-router.post('/api/opt', ansControler.copt)
+//rotue to create the answer 
+router.post('/api/ans', ansControler.copt)
 
 //rotue to get all questions from the database
 router.get('/api/get_qns', qnControler.getQns)
@@ -44,7 +44,7 @@ router.get("/api/qn/ans", ansControler.check);
 
 
 //router to check multi qn ans
-router.post("/api/qn/ans-check", ansControler.multiCheck)
+router.get("/api/qn/ans-check", ansControler.multiCheck)
 
 
 module.exports = router

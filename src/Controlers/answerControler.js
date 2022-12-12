@@ -28,13 +28,13 @@ let check = async (req, res)=>{
 
         let ansData = await ansModel.findOne({question_id:data.qn_id});
 
-        console.log(data.ans)
-        console.log(ansData.answer)
+        //console.log(data.ans)
+        //console.log(ansData.answer)
 
         let qnData = await qnModel.findById({_id: data.qn_id})
 
-        console.log(qnData)
-        console.log(ansData)
+        //console.log(qnData)
+        //console.log(ansData)
 
         if(data.ans == ansData.answer){
             res.send({status: true, reward_points: qnData.question_points})
@@ -59,6 +59,7 @@ const multiCheck = async (req, res)=>{
     try {
         let data = req.body;
 
+       
         let {test_submit} = data
 
         let correct_qns = [];
@@ -79,6 +80,7 @@ const multiCheck = async (req, res)=>{
         // if(ansData[i].question_id.equals( qnData[i]._id )){
                 
         // }
+        //console.time('checkTime')
 
         for(let i=0; i<test_submit.length;i++){
            for(let j=0;j<ansData.length; j++){
@@ -89,15 +91,15 @@ const multiCheck = async (req, res)=>{
             }
            }
         }
-
-        let qnData = await qnModel.find({_id: { $in: [...correct_qns]}})
+        
+        let qnData = await qnModel.find({_id: { $in: [...correct_qns]}}).select({_id:1, level_id:1,question_points:1})
         
         //console.log(qnData);
 
         /// two DB calls only and we are good to goo
 
 
-
+       // console.timeEnd('checkTime')
         res.send({Crct_qns_data: qnData})
     } catch (err) {
         console.log(err)

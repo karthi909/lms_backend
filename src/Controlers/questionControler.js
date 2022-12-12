@@ -25,6 +25,7 @@ const createQnWithAns = async (req, res) =>{
         let data = req.body;
 
         let {level_id, question_title, question_desc, question_img, question_points, options, answer} = data;
+        
         //console.log(data)
 
         let qData = await questionModel.create({
@@ -42,6 +43,8 @@ const createQnWithAns = async (req, res) =>{
             question_id: qData._id,
             answer: data.answer
         });
+
+        //console.log(aData)
 
         res.send({qnData: qData, ansData: aData})
 
