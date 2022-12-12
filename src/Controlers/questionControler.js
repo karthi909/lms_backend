@@ -55,35 +55,6 @@ const createQuestinsWithAnswer = async (req, res) =>{
     }
 }
 
-const getQuestions = async (req, res)=>{
-    try{
-
-    let allData = await questionModel.find()
-
-    res.status(200).send({data: allData})
-    } catch(err){
-        console.log(err)
-        res.status(501).send({Error: err})
-    }
-}
-
-
-const getQuestionWithId = async (req, res)=>{
-    try{
-        //let lmt_nbr = req.query.lmt_nbr
-        let qID =  req.params.questionId
-        //console.log(levelId)
-        let allData = await questionModel.find({_id:qID})
-        console.log(allData)
-
-        res.status(200).send({data: allData});
-
-
-    } catch(err){
-        console.log(err)
-        res.status(501).send({Error: err})
-    }
-}
 
 const getQuestions_by_levelID = async (req, res)=>{
     try{

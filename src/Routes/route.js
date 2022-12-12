@@ -17,19 +17,12 @@ router.get('/api/level/get-all', levelControler.getLevel);
 
 
 //........................................{ questions routes }.............................//
-//route to create question only
-router.post('/api/questions/create-question', qnControler.createQuestions);
+
 
 //route to create with qn and ans, means we wil give both qn with answer but will create seperartly in its own models.
 router.post("/api/questions/create-question-with-answer", qnControler.createQuestinsWithAnswer);
 
 
-
-//rotue to get all questions from the database
-router.get('/api/questions/get-all-questions', qnControler.getQuestions);
-
-//route to get only one qn from data base
-router.get('/api/questions/get-question-by-id/:questionId', qnControler.getQuestionWithId)
 
 //route to get level specifc questiouns from the data base.
 router.get('/api/questions/get-questions-by-levelId/:levelId', qnControler.getQuestions_by_levelID)
@@ -43,13 +36,6 @@ router.get("/api/questions/get-questions-by-levelId-with-limit/:levelId", qnCont
 //...............................{answers routes}............//
 
 router.get("/api/answer/get-answer", ansControler.check);
-
-//rotue to create the answer 
-router.post('/api/answer/create-answer', ansControler.copt);
-
-
-//router to check multi qn ans
-//router.get("/api/qn/ans-check", ansControler.multiCheck)
 
 
 //.................{result routes}.................//
