@@ -3,7 +3,7 @@ const questionModel = require('../Models/questionModel');
 const ansModel = require('../Models/answerModel');
 
 
-const createQn = async (req, res)=>{
+const createQuestions = async (req, res)=>{
     try{
         let data = req.body;
 
@@ -20,7 +20,7 @@ const createQn = async (req, res)=>{
     }
 }
 
-const createQnWithAns = async (req, res) =>{
+const createQuestinsWithAnswer = async (req, res) =>{
     try{
         let data = req.body;
 
@@ -55,7 +55,7 @@ const createQnWithAns = async (req, res) =>{
     }
 }
 
-const getQns = async (req, res)=>{
+const getQuestions = async (req, res)=>{
     try{
 
     let allData = await questionModel.find()
@@ -68,10 +68,10 @@ const getQns = async (req, res)=>{
 }
 
 
-const getQn_ByID = async (req, res)=>{
+const getQuestionWithId = async (req, res)=>{
     try{
         //let lmt_nbr = req.query.lmt_nbr
-        let qID =  req.params.qnId
+        let qID =  req.params.questionId
         //console.log(levelId)
         let allData = await questionModel.find({_id:qID})
         console.log(allData)
@@ -85,9 +85,9 @@ const getQn_ByID = async (req, res)=>{
     }
 }
 
-const getQns_by_levelID = async (req, res)=>{
+const getQuestions_by_levelID = async (req, res)=>{
     try{
-        let lvl_ID = req.params.level_id
+        let lvl_ID = req.params.levelId
         let allData = await questionModel.find({level_id:lvl_ID})
 
         res.send({data: allData})
@@ -97,9 +97,9 @@ const getQns_by_levelID = async (req, res)=>{
     }
 }
 
-const getlevel_qns_limit = async (req, res)=>{
+const getQuestion_by_levelId_limit = async (req, res)=>{
     try{
-        let lvl_ID = req.params.level_id
+        let lvl_ID = req.params.levelId
         //let lmt_nbr = req.query.limitNbr
         //console.log(lmt_nbr)
         let allData = await questionModel.find({level_id:lvl_ID}).limit(req.query.limit)
@@ -111,4 +111,4 @@ const getlevel_qns_limit = async (req, res)=>{
     }
 }
 
-module.exports = {createQn, createQnWithAns, getQns, getQn_ByID, getQns_by_levelID, getlevel_qns_limit}
+module.exports = {createQuestions, createQuestinsWithAnswer, getQuestions, getQuestionWithId, getQuestions_by_levelID, getQuestion_by_levelId_limit}

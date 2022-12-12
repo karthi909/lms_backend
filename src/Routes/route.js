@@ -5,46 +5,53 @@ const levelControler = require("../Controlers/levleController")
 const qnControler = require("../Controlers/questionControler")
 const ansControler = require('../Controlers/answerControler')
 const userController = require('../Controlers/userControler')
+const resultController = require("../Controlers/resultControler")
 
 
-router.post('/api/user', userController.creatUser)
+router.post('/api/user', userController.creatUser);
 
 router.post('/api/level', levelControler.createLevel);
 
 
 
-//........................................{ questions routes }.............................
-
-//route to create qn only
-router.post('/api/qn', qnControler.createQn);
+//........................................{ questions routes }.............................//
+//route to create question only
+router.post('/api/questions/create-question', qnControler.createQuestions);
 
 //route to create with qn and ans, means we wil give both qn with answer but will create seperartly in its own models.
-router.post("/api/qn_ans", qnControler.createQnWithAns);
+router.post("/api/questions/create-question-with-answer", qnControler.createQuestinsWithAnswer);
 
-//router.post('/api/opt', optControler);
 
-//rotue to create the answer 
-router.post('/api/ans', ansControler.copt)
 
 //rotue to get all questions from the database
-router.get('/api/get_qns', qnControler.getQns)
+router.get('/api/questions/get-all-questions', qnControler.getQuestions);
 
 //route to get only one qn from data base
-router.get('/api/:qnId', qnControler.getQn_ByID)
-
+router.get('/api/questions/get-question-by-id/:questionId', qnControler.getQuestionWithId)
 
 //route to get level specifc questiouns from the data base.
-router.get('/api/levl_qn/:level_id', qnControler.getQns_by_levelID)
+router.get('/api/questions/get-questions-by-levelId/:levelId', qnControler.getQuestions_by_levelID)
 
 //route to get level specific limited number of questions from database.
-router.get("/api/lvl/:level_id", qnControler.getlevel_qns_limit)
+router.get("/api/questions/get-questions-by-levelId-with-limit/:levelId", qnControler.getQuestion_by_levelId_limit)
 
 
-router.get("/api/qn/ans", ansControler.check);
+
+
+//...............................{answers routes}............//
+
+router.get("/api/answer/get-answer", ansControler.check);
+
+//rotue to create the answer 
+router.post('/api/answer/create-answer', ansControler.copt);
 
 
 //router to check multi qn ans
-router.get("/api/qn/ans-check", ansControler.multiCheck)
+//router.get("/api/qn/ans-check", ansControler.multiCheck)
+
+
+//.................{result routes}.................//
+router.post('/api/result', resultController.userResult);
 
 
 module.exports = router

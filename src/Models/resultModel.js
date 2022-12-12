@@ -14,7 +14,7 @@ const resultSchema = mongoose.Schema({
 
 },{timestamps: true});
 
-module.exports = mongoose.model('resultd', resultSchema)
+module.exports = mongoose.model('results', resultSchema)
 
 
 //test atempt Date

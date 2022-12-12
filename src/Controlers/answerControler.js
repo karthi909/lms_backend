@@ -24,28 +24,30 @@ let check = async (req, res)=>{
 
         let data = req.body;
 
-        let {qn_id, ans } = data;
+        let {qn_id } = data;
 
         let ansData = await ansModel.findOne({question_id:data.qn_id});
 
         //console.log(data.ans)
         //console.log(ansData.answer)
 
-        let qnData = await qnModel.findById({_id: data.qn_id})
+        //let qnData = await qnModel.findById({_id: data.qn_id})
 
         //console.log(qnData)
         //console.log(ansData)
 
-        if(data.ans == ansData.answer){
-            res.send({status: true, reward_points: qnData.question_points})
-        } else {
-            //console.log("not matched the ans")
-            res.send({status: false, reward_points:0});
-        }
+        // if(data.ans == ansData.answer){
+        //     res.send({status: true, reward_points: ansData})
+        // } else {
+        //     //console.log("not matched the ans")
+        //     res.send({status: false, reward_points:0});
+        // }
 
        
 
         //res.send({data:"done"})
+
+        res.send({data:ansData.answer })
             
 
     } catch(err){
@@ -55,56 +57,56 @@ let check = async (req, res)=>{
 }
 
 
-const multiCheck = async (req, res)=>{
-    try {
-        let data = req.body;
+// const multiCheck = async (req, res)=>{
+//     try {
+//         let data = req.body;
 
        
-        let {test_submit} = data
+//         let {test_submit} = data
 
-        let correct_qns = [];
-        let qn_ids = [];
+//         let correct_qns = [];
+//         let qn_ids = [];
 
-        for(let i=0;i<test_submit.length;i++){
-            qn_ids.push(test_submit[i].qn_id)
-        }
-        //console.log(qn_ids)
+//         for(let i=0;i<test_submit.length;i++){
+//             qn_ids.push(test_submit[i].qn_id)
+//         }
+//         //console.log(qn_ids)
 
-        let ansData = await answerModel.find({question_id: { $in : [...qn_ids]}})
+//         let ansData = await answerModel.find({question_id: { $in : [...qn_ids]}})
 
         
 
-        //console.log(ansData)
-        //console.log("-->",qnData)
+//         //console.log(ansData)
+//         //console.log("-->",qnData)
        
-        // if(ansData[i].question_id.equals( qnData[i]._id )){
+//         // if(ansData[i].question_id.equals( qnData[i]._id )){
                 
-        // }
-        //console.time('checkTime')
+//         // }
+//         //console.time('checkTime')
 
-        for(let i=0; i<test_submit.length;i++){
-           for(let j=0;j<ansData.length; j++){
-            if(ansData[j].question_id.equals(test_submit[i].qn_id)){
-                if(ansData[j].answer == test_submit[i].ans){
-                    correct_qns.push(test_submit[i].qn_id)
-                }
-            }
-           }
-        }
+//         for(let i=0; i<test_submit.length;i++){
+//            for(let j=0;j<ansData.length; j++){
+//             if(ansData[j].question_id.equals(test_submit[i].qn_id)){
+//                 if(ansData[j].answer == test_submit[i].ans){
+//                     correct_qns.push(test_submit[i].qn_id)
+//                 }
+//             }
+//            }
+//         }
         
-        let qnData = await qnModel.find({_id: { $in: [...correct_qns]}}).select({_id:1, level_id:1,question_points:1})
+//         let qnData = await qnModel.find({_id: { $in: [...correct_qns]}}).select({_id:1, level_id:1,question_points:1})
         
-        //console.log(qnData);
+//         //console.log(qnData);
 
-        /// two DB calls only and we are good to goo
+//         /// two DB calls only and we are good to goo
 
 
-       // console.timeEnd('checkTime')
-        res.send({Crct_qns_data: qnData})
-    } catch (err) {
-        console.log(err)
-        res.send({error: err})
-    }
-}
+//        // console.timeEnd('checkTime')
+//         res.send({Crct_qns_data: qnData})
+//     } catch (err) {
+//         console.log(err)
+//         res.send({error: err})
+//     }
+// }
 
-module.exports = {copt, check, multiCheck}
+module.exports = {copt, check}//, multiCheck}
