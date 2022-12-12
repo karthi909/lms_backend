@@ -12,6 +12,8 @@ router.post('/api/user', userController.creatUser);
 
 router.post('/api/level', levelControler.createLevel);
 
+router.get('/api/level/get-all', levelControler.getLevel);
+
 
 
 //........................................{ questions routes }.............................//

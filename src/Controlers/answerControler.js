@@ -12,7 +12,7 @@ let copt = async (req, res)=>{
 
     let nData = await ansModel.create(data);
 
-    res.send({data: nData})
+    res.status(201).send({data: nData})
     } catch(err){
         console.log(err)
         //res.send({ err})
@@ -46,8 +46,9 @@ let check = async (req, res)=>{
        
 
         //res.send({data:"done"})
+        let rp = {answer: ansData.answer }
 
-        res.send({data:ansData.answer })
+        res.status(200).send({data:rp})
             
 
     } catch(err){

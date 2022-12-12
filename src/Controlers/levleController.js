@@ -1,4 +1,5 @@
 
+
 const levelModel = require("../Models/levlModel");
 
 const createLevel = async (req, res)=>{
@@ -8,12 +9,23 @@ const createLevel = async (req, res)=>{
 
     let nData = await levelModel.create(data);
         //console.log(nData)
-    return res.send({data: nData})
+    return res.status(201).send({data: nData})
 
     } catch(err){
         console.log(err)
-        res.send({error: err})
+        res.status(501).send({Error: err})
     }
 }
 
-module.exports = {createLevel}
+
+const getLevel = async (req, res)=>{
+    try{
+        let nData = await levelModel.find()
+
+        res.status(200).send({data: nData})
+    } catch(err){
+        res.status(501).send({Error: err})
+    }
+}
+
+module.exports = {createLevel, getLevel}

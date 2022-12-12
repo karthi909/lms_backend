@@ -11,12 +11,12 @@ const createQuestions = async (req, res)=>{
         
         let nData = await questionModel.create(data)
 
-        res.send({data: nData});
+        res.status(201).send({data: nData});
 
 
     } catch(err){
         console.log(err)
-        res.send({error: err});
+        res.status(501).send({Error: err})
     }
 }
 
@@ -46,12 +46,12 @@ const createQuestinsWithAnswer = async (req, res) =>{
 
         //console.log(aData)
 
-        res.send({qnData: qData, ansData: aData})
+        res.status(201).send({qnData: qData, ansData: aData})
 
 
     } catch(err){
         console.log(err)
-        res.send({error: err})
+        res.status(501).send({Error: err})
     }
 }
 
@@ -60,10 +60,10 @@ const getQuestions = async (req, res)=>{
 
     let allData = await questionModel.find()
 
-    res.send({data: allData})
+    res.status(200).send({data: allData})
     } catch(err){
         console.log(err)
-        res.send({error: err})
+        res.status(501).send({Error: err})
     }
 }
 
@@ -76,12 +76,12 @@ const getQuestionWithId = async (req, res)=>{
         let allData = await questionModel.find({_id:qID})
         console.log(allData)
 
-        res.send({data: allData});
+        res.status(200).send({data: allData});
 
 
     } catch(err){
         console.log(err)
-        res.send({error: err})
+        res.status(501).send({Error: err})
     }
 }
 
@@ -90,10 +90,10 @@ const getQuestions_by_levelID = async (req, res)=>{
         let lvl_ID = req.params.levelId
         let allData = await questionModel.find({level_id:lvl_ID})
 
-        res.send({data: allData})
+        res.status(200).send({data: allData})
     } catch(err){
         console.log(err)
-        res.send({error: err})
+        res.status(501).send({error: err})
     }
 }
 
@@ -104,10 +104,10 @@ const getQuestion_by_levelId_limit = async (req, res)=>{
         //console.log(lmt_nbr)
         let allData = await questionModel.find({level_id:lvl_ID}).limit(req.query.limit)
 
-        res.send({data: allData})
+        res.status(200).send({data: allData})
     } catch(err){
         console.log(err)
-        res.send({error: err})
+        res.status(501).send({error: err})
     }
 }
 
